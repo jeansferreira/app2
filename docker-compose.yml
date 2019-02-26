@@ -25,3 +25,7 @@ services:
       - .:/src/github.com/jeansferreira/app2
     depends_on:
       - db
+
+networks: 
+  postgres-compose-network:
+    driver: bridge

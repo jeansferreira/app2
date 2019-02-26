@@ -26,7 +26,7 @@ func getEnv(key, fallback string) string {
 // migrates any new models
 func Init() {
 	user := getEnv("POSTGRES_USER", "postgres")
-	password := getEnv("POSTGRES_PASSWORD", "postgres")
+	password := getEnv("POSTGRES_PASSWORD", "example")
 	host := getEnv("PG_HOST", "localhost")
 	port := getEnv("PG_PORT", "5432")
 	database := getEnv("POSTGRES_DB", "postgres")
