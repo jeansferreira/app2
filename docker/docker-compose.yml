@@ -1,0 +1,27 @@
+version: '3.1'
+
+volumes:
+  database_data:
+    driver: local
+
+services:
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: example
+    ports:
+      - 5432:5432
+    volumes:
+      - database_data:/var/lib/postgresql/data
+
+  app2:
+    build: .
+    dockerfile: docker/Dockerfile
+    command: ["go", "run", "main.go"]
+    volumes:
+      - .:/src/github.com/jeansferreira/app2
+    depends_on:
+      - db
